@@ -9,6 +9,11 @@ class Slide {
     constructor(slideElement) {
         this.slideElement = slideElement;
         this.imagesContainer = slideElement.getElementsByTagName("ul")[0];
+        if(!this.imagesContainer)
+        {
+            this.imagesContainer = slideElement.getElementsByTagName("ol")[0];
+        }
+
         this.images = this.imagesContainer.getElementsByTagName("li");
         this.imageWidth = this.images[0].getBoundingClientRect().width;
 
@@ -55,8 +60,6 @@ class Slide {
         
         this.imagesContainer.style.transform = "translateX(-" + this.currentImgIndex * this.imageWidth + "px)";
     }
-
-
 }
 
 
