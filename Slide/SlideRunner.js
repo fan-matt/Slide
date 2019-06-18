@@ -3,14 +3,14 @@
 let target = "Slide";
 let leftTarget = "SlideLeft";
 let rightTarget = "SlideRight";
+let selectorTarget = "SlideSelector";
 
 
 class Slide {
     constructor(slideElement) {
         this.slideElement = slideElement;
         this.imagesContainer = slideElement.getElementsByTagName("ul")[0];
-        if(!this.imagesContainer)
-        {
+        if(!this.imagesContainer) {
             this.imagesContainer = slideElement.getElementsByTagName("ol")[0];
         }
 
@@ -20,16 +20,27 @@ class Slide {
         // Control button assignment
         this.leftButton = slideElement.getElementsByClassName(leftTarget)[0];
         this.rightButton = slideElement.getElementsByClassName(rightTarget)[0];
+        
+        this.controlButtons = [];
+        if(slideElement.getElementsByClassName(selectorTarget)[0]) {
+            this.controlButtons = slideElement.getElementsByClassName(selectorTarget)[0].children;
+        }
 
-        if(this.leftButton)
-        {
+        if(this.leftButton) {
            this.leftButton.addEventListener("click" , leftHandler , false); 
         }
 
-        if(this.rightButton)
-        {
+        if(this.rightButton) {
             this.rightButton.addEventListener("click" , rightHandler , false);
         }
+
+        // Give event listener to each selector
+        for(let i = 0; i < this.controlButtons.length; i ++) {
+            this.controlButtons[i].addEventListener("click" , () => {
+                this.moveTo(i);
+            } , false);
+        }
+
 
         // Current image being displayed by slideshow
         this.currentImgIndex = 0;
@@ -59,6 +70,11 @@ class Slide {
         }
         
         this.imagesContainer.style.transform = "translateX(-" + this.currentImgIndex * this.imageWidth + "px)";
+    }
+
+    moveTo(slideNum) {
+        this.imagesContainer.style.transform = "translateX(-" + slideNum * this.imageWidth + "px)";
+        this.currentImgIndex = slideNum;
     }
 }
 
