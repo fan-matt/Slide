@@ -29,10 +29,23 @@ class Slide {
         // Current image being displayed by slideshow
         this.currentImgIndex = 0;
         this.numImg = this.images.length;
+
+        // Global styling
+        this.imagesContainer.style.transition = "transform 750ms";
     }
 
+    left() {
+        this.currentImgIndex --;
+
+        if(this.currentImgIndex < 0)
+        {
+            this.currentImgIndex = this.images.length - 1;
+        }
+
+        this.imagesContainer.style.transform = "translateX(-" + this.currentImgIndex * this.imageWidth + "px)";
+    }
     
-    left () {
+    right () {
         this.currentImgIndex ++;
 
         if(this.currentImgIndex >= this.images.length)
@@ -43,16 +56,7 @@ class Slide {
         this.imagesContainer.style.transform = "translateX(-" + this.currentImgIndex * this.imageWidth + "px)";
     }
 
-    right() {
-        this.currentImgIndex --;
 
-        if(this.currentImgIndex < 0)
-        {
-            this.currentImgIndex = this.images.length - 1;
-        }
-
-        this.imagesContainer.style.transform = "translateX(-" + this.currentImgIndex * this.imageWidth + "px)";
-    }
 }
 
 
