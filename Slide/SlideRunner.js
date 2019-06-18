@@ -7,6 +7,7 @@ let rightTarget = "SlideRight";
 
 class Slide {
     constructor(slideElement) {
+        this.slideElement = slideElement;
         this.imagesContainer = slideElement.getElementsByTagName("ul")[0];
         this.images = this.imagesContainer.getElementsByTagName("li");
         this.imageWidth = this.images[0].getBoundingClientRect().width;
@@ -17,31 +18,41 @@ class Slide {
 
         if(this.leftButton)
         {
-           this.leftButton.addEventListener("click" , this.left , false); 
+           this.leftButton.addEventListener("click" , leftHandler , false); 
         }
 
         if(this.rightButton)
         {
-            this.rightButton.addEventListener("click" , this.right , false);
+            this.rightButton.addEventListener("click" , rightHandler , false);
         }
     }
 
     
     left () {
-        alert("Hello!");
+        console.log("In left");
+        console.log(this.slideElement.SlideID);
     }
 
     right() {
-        alert("Bye!");
+        console.log("In right");
     }
+}
+
+
+let slideshows = [];
+
+function leftHandler() {
+    slideshows[this.closest("." + target).SlideID].left();
+}
+
+function rightHandler() {
+    slideshows[this.closest("." + target).SlideID].right();
 }
 
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    let slideshowElements = document.getElementsByClassName(target)
-    let slideshows = [];
-    console.log(slideshowElements);
+    let slideshowElements = document.getElementsByClassName(target);
 
     for(let i = 0; i < slideshowElements.length; i ++) {
         let slideshowElement = slideshowElements[i];
