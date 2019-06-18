@@ -1,0 +1,21 @@
+.slide {
+    width: 1000px;
+    overflow: hidden;
+}
+
+
+.slideshow {
+    display: flex;
+}
+
+
+.slideshow > li {
+    list-style: none;
+    width: 1000px;
+}
+
+
+.slideshow > li > img
+{
+    width: 1000px;
+}
