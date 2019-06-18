@@ -25,16 +25,33 @@ class Slide {
         {
             this.rightButton.addEventListener("click" , rightHandler , false);
         }
+
+        // Current image being displayed by slideshow
+        this.currentImgIndex = 0;
+        this.numImg = this.images.length;
     }
 
     
     left () {
-        console.log("In left");
-        console.log(this.slideElement.SlideID);
+        this.currentImgIndex ++;
+
+        if(this.currentImgIndex >= this.images.length)
+        {
+            this.currentImgIndex = 0;
+        }
+        
+        this.imagesContainer.style.transform = "translateX(-" + this.currentImgIndex * this.imageWidth + "px)";
     }
 
     right() {
-        console.log("In right");
+        this.currentImgIndex --;
+
+        if(this.currentImgIndex < 0)
+        {
+            this.currentImgIndex = this.images.length - 1;
+        }
+
+        this.imagesContainer.style.transform = "translateX(-" + this.currentImgIndex * this.imageWidth + "px)";
     }
 }
 
