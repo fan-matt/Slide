@@ -12,7 +12,7 @@ A vanilla JS slideshow for people who want to write once and then never again.
 
 Import the script in the `<head>` tag at the top of your HTML file:
 ```html 
-<script src="SlideRunner.js"></script> 
+<script src="Slide.js"></script> 
 ```
 
 Add the class `Slide` to your slideshow:
@@ -65,7 +65,7 @@ Done! Slide will handle the rest.
 
 <h2> Installation </h2>
 
-Just copy `SlideRunner.js` into your `scripts` folder and import!
+Just copy `Slide.js` into your `scripts` folder and import!
 
 <h2> Detailed Usage </h2>
 
