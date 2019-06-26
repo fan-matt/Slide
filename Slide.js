@@ -4,6 +4,7 @@ let target = "Slide";
 let leftTarget = "SlideLeft";
 let rightTarget = "SlideRight";
 let selectorTarget = "SlideSelector";
+let transitionTime = "750ms";
 
 
 class Slide {
@@ -47,7 +48,7 @@ class Slide {
         this.numImg = this.images.length;
 
         // Global styling
-        this.imagesContainer.style.transition = "transform 750ms";
+        this.imagesContainer.style.transition = "transform " + transitionTime;
     }
 
     left() {
@@ -76,6 +77,10 @@ class Slide {
         this.imagesContainer.style.transform = "translateX(-" + slideNum * this.imageWidth + "px)";
         this.currentImgIndex = slideNum;
     }
+
+    setSize() {
+        this.imageWidth = this.images[0].getBoundingClientRect().width;
+    }
 }
 
 
@@ -98,6 +103,19 @@ window.addEventListener('load', function() {
         let slideshowElement = slideshowElements[i];
         slideshowElement.SlideID = i;
         slideshows[i] = new Slide(slideshowElement);
+    }
+
+}, false);
+
+
+window.addEventListener('resize' , function() {
+
+    for(let i = 0; i < slideshows.length; i ++) {
+        slideshows[i].setSize();
+
+        // To unbreak it on resize
+        slideshows[i].left();
+        slideshows[i].right();
     }
 
 }, false);
