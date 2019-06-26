@@ -19,3 +19,23 @@
 {
     width: 1000px;
 }
+
+
+#resize-me {
+    width: 50%;
+}
+
+#resize-me > ul {
+    width: 500%;
+}
+
+
+#resize-me > ul > li {
+    position: relative;
+    width: 100%;
+}
+
+
+#resize-me > ul > li > img {
+    width: 100%;
+}
