@@ -90,7 +90,7 @@ function rightHandler() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('load', function() {
 
     let slideshowElements = document.getElementsByClassName(target);
 
