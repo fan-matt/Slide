@@ -52,28 +52,21 @@ class Slide {
     }
 
     left() {
-        this.currentImgIndex --;
-
-        if(this.currentImgIndex < 0)
-        {
-            this.currentImgIndex = this.images.length - 1;
-        }
-
-        this.imagesContainer.style.transform = "translateX(-" + this.currentImgIndex * this.imageWidth + "px)";
+        this.moveTo(this.currentImgIndex - 1);
     }
     
     right () {
-        this.currentImgIndex ++;
-
-        if(this.currentImgIndex >= this.images.length)
-        {
-            this.currentImgIndex = 0;
-        }
-        
-        this.imagesContainer.style.transform = "translateX(-" + this.currentImgIndex * this.imageWidth + "px)";
+        this.moveTo(this.currentImgIndex + 1);
     }
 
     moveTo(slideNum) {
+        if(slideNum < 0) {
+            slideNum = this.images.length - 1;
+        } 
+        else if (slideNum >= this.images.length) {
+            slideNum = 0;
+        }
+
         this.imagesContainer.style.transform = "translateX(-" + slideNum * this.imageWidth + "px)";
         this.currentImgIndex = slideNum;
     }
