@@ -71,7 +71,7 @@ class Slide {
         this.currentImgIndex = slideNum;
     }
 
-    setSize() {
+    setImageWidth() {
         this.imageWidth = this.images[0].getBoundingClientRect().width;
     }
 }
@@ -104,7 +104,7 @@ window.addEventListener('load', function() {
 window.addEventListener('resize' , function() {
 
     for(let i = 0; i < slideshows.length; i ++) {
-        slideshows[i].setSize();
+        slideshows[i].setImageWidth();
 
         // To unbreak it on resize
         slideshows[i].left();
